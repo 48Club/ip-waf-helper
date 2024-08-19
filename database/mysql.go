@@ -28,5 +28,5 @@ func init() {
 	Server.DB = engine
 }
 func gethDSN() string {
-	return fmt.Sprintf("root:%s@tcp(mysql:3306)/ip-waf-helper", os.Getenv("MARIADB_ROOT_PASSWORD"))
+	return fmt.Sprintf("root:%s@tcp(mysql:3306)/ip_waf_helper", os.Getenv("MARIADB_ROOT_PASSWORD"))
 }
