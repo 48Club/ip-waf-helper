@@ -1,0 +1,17 @@
+services:
+    mysql:
+        image: mariadb:lts
+        environment:
+            MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+            TZ: ${TZ}
+        volumes:
+            - ./mysql:/var/lib/mysql
+    waf:
+        build: .
+        environment:
+            MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+            TZ: ${TZ}
+        depends_on:
+            - mysql
+        ports:
+            - 80:80/tcp
