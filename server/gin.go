@@ -3,11 +3,10 @@ package server
 import (
 	"ip-waf-helper/database"
 	"ip-waf-helper/types"
-	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func postHandlerFunc(c *gin.Context) {
@@ -37,8 +36,7 @@ func getHandlerFunc(c *gin.Context) {
 func Run() error {
 	r := gin.Default()
 
-	token := uuid.New().String()
-	log.Printf("token: %s\n", token)
+	token := os.Getenv("GIN_TOKEN")
 
 	r.Use(func(ctx *gin.Context) {
 		if ctx.GetHeader("Authorization") != token {

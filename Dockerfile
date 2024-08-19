@@ -13,6 +13,7 @@ COPY --from=0 /app/ip-waf-helper /app/ip-waf-helper
 RUN apk --no-cache add tzdata
 
 ENV MARIADB_ROOT_PASSWORD=\
-    TZ=
+    TZ=\
+    GIN_TOKEN=
 
 ENTRYPOINT ["/app/ip-waf-helper"]
