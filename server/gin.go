@@ -1,11 +1,11 @@
 package server
 
 import (
-	"ip-waf-helper/database"
-	"ip-waf-helper/types"
 	"net/http"
 	"os"
 
+	"github.com/48Club/ip-waf-helper/database"
+	"github.com/48Club/ip-waf-helper/types"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,14 +23,22 @@ func postHandlerFunc(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, query)
 }
+
 func getHandlerFunc(c *gin.Context) {
-	var query = []types.IPWaf{}
+	var (
+		query = []types.IPWaf{}
+		resp  = types.AllIPs{}
+	)
+
 	tx := database.Server.Find(&query)
 	if tx.Error != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": tx.Error.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, query)
+	for _, v := range query {
+		resp = append(resp, v.IP)
+	}
+	c.JSON(http.StatusOK, resp)
 }
 
 func Run() error {

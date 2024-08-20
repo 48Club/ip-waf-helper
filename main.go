@@ -1,7 +1,7 @@
 package main
 
 import (
-	"ip-waf-helper/server"
+	"github.com/48Club/ip-waf-helper/server"
 )
 
 func main() {

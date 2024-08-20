@@ -1,4 +1,4 @@
-module ip-waf-helper
+module github.com/48Club/ip-waf-helper
 
 go 1.22.5
 

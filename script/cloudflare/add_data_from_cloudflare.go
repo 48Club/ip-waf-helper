@@ -2,13 +2,13 @@ package main
 
 import (
 	"context"
-	"ip-waf-helper/database"
-	"ip-waf-helper/types"
 	"log"
 	"net"
 	"os"
 	"time"
 
+	"github.com/48Club/ip-waf-helper/database"
+	"github.com/48Club/ip-waf-helper/types"
 	"github.com/cloudflare/cloudflare-go"
 )
 

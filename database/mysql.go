@@ -2,9 +2,9 @@ package database
 
 import (
 	"fmt"
-	"ip-waf-helper/types"
 	"os"
 
+	"github.com/48Club/ip-waf-helper/types"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -27,6 +27,7 @@ func init() {
 	}
 	Server.DB = engine
 }
+
 func gethDSN() string {
 	return fmt.Sprintf("root:%s@tcp(mysql:3306)/ip_waf_helper", os.Getenv("MARIADB_ROOT_PASSWORD"))
 }
